@@ -7,5 +7,6 @@
 ---
 
 - ng new udemy-reservation-app --no-standalone
+- npm install bootstrap --save
 
 ---
