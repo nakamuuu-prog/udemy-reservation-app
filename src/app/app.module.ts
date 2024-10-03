@@ -7,11 +7,15 @@ import {
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './common/navbar/navbar.component';
-import { ProductListComponent } from './product-list/product-list.component';
 
 @NgModule({
-  declarations: [AppComponent, NavbarComponent, ProductListComponent],
-  imports: [BrowserModule, AppRoutingModule],
+  declarations: [AppComponent, NavbarComponent],
+  imports: [
+    // BrowserModuleはCommonModuleやApplicationModuleを継承したモジュールなので、CommonModuleの部品も使えるようになっている
+    // REFE: https://v17.angular.io/api/platform-browser/BrowserModule
+    BrowserModule,
+    AppRoutingModule,
+  ],
   providers: [provideClientHydration()],
   bootstrap: [AppComponent],
 })

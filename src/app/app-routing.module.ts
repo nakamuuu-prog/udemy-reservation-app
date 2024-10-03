@@ -1,11 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ProductListComponent } from './product-list/product-list.component';
+import { ProductModule } from './product/product.module';
 
-const routes: Routes = [{ path: '', component: ProductListComponent }];
+const routes: Routes = [
+  // TOPページに遷移すると真っ白なので、productsのページにリダイレクトされるようにする
+  { path: '', redirectTo: 'products', pathMatch: 'full' },
+];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  // Productの各コンポーネントをインポートしていたが、ProductModuleとして1つにまとめたものをインポートする
+  // そうすることでProductModule内で定義されたコンポーネントやルーティングが正常に動作するようになる
+  imports: [RouterModule.forRoot(routes), ProductModule],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
