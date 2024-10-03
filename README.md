@@ -8,5 +8,6 @@
 
 - ng new udemy-reservation-app --no-standalone
 - npm install bootstrap --save
+- ng generate component [component name]
 
 ---
