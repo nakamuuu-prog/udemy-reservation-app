@@ -7,6 +7,7 @@ import {
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './common/navbar/navbar.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent, NavbarComponent],
@@ -15,6 +16,7 @@ import { NavbarComponent } from './common/navbar/navbar.component';
     // REFE: https://v17.angular.io/api/platform-browser/BrowserModule
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
   ],
   providers: [provideClientHydration()],
   bootstrap: [AppComponent],
