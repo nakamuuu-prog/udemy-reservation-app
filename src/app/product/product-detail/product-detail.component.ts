@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { products } from '../../products';
+import { ProductService } from '../shared/product.service';
 
 @Component({
   selector: 'app-product-detail',
@@ -9,14 +9,23 @@ import { products } from '../../products';
 })
 export class ProductDetailComponent {
   product: any;
-  constructor(private route: ActivatedRoute) {}
+  constructor(
+    private route: ActivatedRoute,
+    private productService: ProductService
+  ) {}
 
   ngOnInit() {
     const routerParams = this.route.snapshot.paramMap;
-    const productIdFromRoute = Number(routerParams.get('productId'));
-
-    this.product = products.find(
-      (product) => product.id === productIdFromRoute
+    const productIdFromRoute = String(routerParams.get('productId'));
+    const productsObservable =
+      this.productService.getProductById(productIdFromRoute);
+    productsObservable.subscribe(
+      (data) => {
+        this.product = data;
+      },
+      (err) => {
+        console.error('something wrong occurred: ' + err);
+      }
     );
   }
 }

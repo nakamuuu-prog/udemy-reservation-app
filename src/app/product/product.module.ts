@@ -4,6 +4,7 @@ import { ProductListComponent } from './product-listings/product-listings.compon
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { CommonModule } from '@angular/common';
 import { ProductComponent } from './product.component';
+import { ProductService } from './shared/product.service';
 
 const routes: Routes = [
   {
@@ -32,7 +33,7 @@ const routes: Routes = [
     // REFE: https://v17.angular.io/api/common/CommonModule
     CommonModule,
   ],
-  providers: [],
+  providers: [ProductService],
   bootstrap: [],
 })
 export class ProductModule {}
