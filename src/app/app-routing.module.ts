@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ProductModule } from './product/product.module';
+import { AuthModule } from './auth/auth.module';
 
 const routes: Routes = [
   // TOPページに遷移すると真っ白なので、productsのページにリダイレクトされるようにする
@@ -10,7 +11,7 @@ const routes: Routes = [
 @NgModule({
   // Productの各コンポーネントをインポートしていたが、ProductModuleとして1つにまとめたものをインポートする
   // そうすることでProductModule内で定義されたコンポーネントやルーティングが正常に動作するようになる
-  imports: [RouterModule.forRoot(routes), ProductModule],
+  imports: [RouterModule.forRoot(routes), ProductModule, AuthModule],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
