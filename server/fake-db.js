@@ -8,12 +8,15 @@ class FakeDB {
         name: 'Phone XL',
         price: 799,
         description: 'A large phone with one of the best screens',
-        heading1: 'Phone XL heading1',
-        heading2: 'Phone XL heading2',
-        heading3: 'Phone XL heading3',
-        headingText1: 'Phone XL headingText1',
-        headingText2: 'Phone XL headingText2',
-        headingText3: 'Phone XL headingText3',
+        heading1: 'Edge-to-Edge Display',
+        heading2: 'Facial recognition',
+        heading3: 'Powerful chip',
+        headingText1:
+          'The Phone XL introduced a 5.8-inch display with minimal bezels, offering an immersive viewing experience and vibrant colors.',
+        headingText2:
+          'It was the first Phone to replace the fingerprint sensor with facial recognition technology for unlocking the phone and authentication.',
+        headingText3:
+          'The Phone XL featured powerful chip, which enhanced performance, efficiency, and supported advanced augmented reality (AR) applications.',
       },
       {
         coverImage: './assets/img/phone-cover.jpg',

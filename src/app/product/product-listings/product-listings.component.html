@@ -1,19 +1,32 @@
-<div class="container">
-  <!-- bootstrapのrowとcolで行と列を表現する -->
-  <div class="row" style="margin-top: 30px">
-    <!-- indexはngForでループを回した時のインデックスナンバー -->
-    <div *ngFor="let product of products" class="col-sm">
-      <!-- 「/」をつけないことで「/products/detail」と同義になる -->
-      <a [routerLink]="[product._id]">
-        <!-- <a [routerLink]="['productId', product.id]"> -->
-        <div class="card">
-          <img src="{{ product.coverImage }}" class="card-img-top" alt="..." />
-          <div class="card-body">
-            <h5 class="card-title">{{ product.name }}</h5>
-            <p class="card-text">{{ product.description }}</p>
+<div class="wrapper">
+  <div
+    class="page-header page-header-xs"
+    data-parallax="true"
+    style="background-image: url('./assets/img/phone-cover.jpg')"
+  >
+    <!-- <div class="filter"></div> -->
+  </div>
+  <div class="container">
+    <!-- bootstrapのrowとcolで行と列を表現する -->
+    <div class="row" style="margin-top: 30px">
+      <!-- indexはngForでループを回した時のインデックスナンバー -->
+      <div *ngFor="let product of products" class="col-sm">
+        <!-- 「/」をつけないことで「/products/detail」と同義になる -->
+        <a [routerLink]="[product._id]">
+          <!-- <a [routerLink]="['productId', product.id]"> -->
+          <div class="card">
+            <img
+              src="{{ product.coverImage }}"
+              class="card-img-top"
+              alt="..."
+            />
+            <div class="card-body">
+              <h5 class="card-title">{{ product.name }}</h5>
+              <p class="card-text">{{ product.description }}</p>
+            </div>
           </div>
-        </div>
-      </a>
+        </a>
+      </div>
     </div>
   </div>
 </div>
