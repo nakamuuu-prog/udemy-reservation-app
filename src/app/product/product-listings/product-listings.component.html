@@ -12,7 +12,7 @@
       <!-- indexはngForでループを回した時のインデックスナンバー -->
       <div *ngFor="let product of products" class="col-sm">
         <!-- 「/」をつけないことで「/products/detail」と同義になる -->
-        <a [routerLink]="[product._id]">
+        <a [routerLink]="[product.id]">
           <!-- <a [routerLink]="['productId', product.id]"> -->
           <div class="card">
             <img
