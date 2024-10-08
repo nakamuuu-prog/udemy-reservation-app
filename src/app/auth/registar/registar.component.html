@@ -26,51 +26,100 @@
                 <i class="fa fa-twitter"></i>
               </a>
             </div>
-            <form class="register-form">
-              <label>Email</label>
-              <div
-                class="input-group form-group-no-border"
-                [ngClass]="{ 'input-group-focus': focus === true }"
-              >
+            <!-- 入力フォームはTemplate-drivenという方法で実装する -->
+            <!-- REFE: https://v17.angular.io/guide/forms -->
+            <!-- #を使ってフォームに名前をつける -->
+            <!-- ngSubmitでsubmitが発火したときに呼び出す関数を指定 -->
+            <form
+              class="register-form"
+              #registerForm="ngForm"
+              (ngSubmit)="register(registerForm)"
+            >
+              <label>ユーザー名</label>
+              <div class="input-group form-group-no-border">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">
+                    <i class="nc-icon nc-single-02"></i>
+                  </span>
+                </div>
+
+                <input
+                  ngModel
+                  name="userName"
+                  type="text"
+                  class="form-control"
+                  placeholder="ユーザー名"
+                  required
+                />
+              </div>
+
+              <label>Eメール</label>
+              <div class="input-group form-group-no-border">
                 <div class="input-group-prepend">
                   <span class="input-group-text">
                     <i class="nc-icon nc-email-85"></i>
                   </span>
                 </div>
 
+                <!-- naModelを付与してnameを指定することで、JSON形式で値を渡すことができる -->
                 <input
-                  type="text"
+                  ngModel
+                  name="email"
+                  type="email"
                   class="form-control"
-                  placeholder="Email"
-                  (focus)="focus = true"
-                  (blur)="focus = false"
+                  placeholder="Eメール"
+                  pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$"
+                  required
                 />
               </div>
 
-              <label>Password</label>
-              <div
-                class="input-group form-group-no-border"
-                [ngClass]="{ 'input-group-focus': focus1 === true }"
-              >
+              <label>パスワード</label>
+              <div class="input-group form-group-no-border">
                 <div class="input-group-prepend">
                   <span class="input-group-text">
                     <i class="nc-icon nc-key-25"></i>
                   </span>
                 </div>
                 <input
-                  type="text"
+                  ngModel
+                  name="password"
+                  type="password"
                   class="form-control"
-                  placeholder="Password"
-                  (focus)="focus1 = true"
-                  (blur)="focus1 = false"
+                  placeholder="パスワード"
+                  required
                 />
               </div>
-              <button class="btn btn-danger btn-block btn-round">
-                Register
+
+              <label>パスワード（確認）</label>
+              <div class="input-group form-group-no-border">
+                <input
+                  ngModel
+                  name="confirmPassword"
+                  type="password"
+                  class="form-control"
+                  placeholder="パスワード（確認）"
+                  required
+                />
+              </div>
+              <!-- 今回はバインディングを使わずsubmitを使う -->
+              <!-- disabledのプロパティバインディングを使うことでボタンの活性非活性の制御が可能 -->
+              <button
+                [disabled]="!registerForm.valid"
+                type="submit"
+                class="btn btn-danger btn-block btn-round"
+              >
+                登録
               </button>
             </form>
+            <!-- ちょっとめんどくさいのでbrで対応 -->
+            <br />
+            <div *ngIf="errors && errors.length > 0" class="alert alert-danger">
+              <p *ngFor="let error of errors">{{ error }}</p>
+            </div>
             <div class="forgot">
-              <a href="#" class="btn btn-link btn-danger">Forgot password?</a>
+              <a href="#" class="btn btn-link btn-danger"
+                >パスワードを忘れた場合</a
+              >
             </div>
           </div>
         </div>

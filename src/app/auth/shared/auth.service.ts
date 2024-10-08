@@ -6,11 +6,14 @@ import { Observable } from 'rxjs';
 export class AuthService {
   constructor(private http: HttpClient) {}
 
-  getProducts(): Observable<any> {
-    return this.http.get('/api/v1/products');
+  register(userData: UserSignUpInfo): Observable<any> {
+    return this.http.post('http://localhost:5238/api/register/', userData);
   }
+}
 
-  getProductById(productId: string): Observable<any> {
-    return this.http.get(`/api/v1/products/${productId}`);
-  }
+export interface UserSignUpInfo {
+  userName: string;
+  email: string;
+  password: string;
+  confirmPassword: string;
 }
