@@ -35,12 +35,28 @@ export class RegistarComponent {
       clientErrors.push('ユーザー名は必須です。');
     }
 
+    if (userSignUpInfo.userName.length > 60) {
+      clientErrors.push('ユーザー名は最大60文字までです。');
+    }
+
     if (!userSignUpInfo.email) {
       clientErrors.push('Eメールは必須です。');
     }
 
+    if (userSignUpInfo.email.length > 60) {
+      clientErrors.push('Eメールは最大60文字までです。');
+    }
+
     if (!userSignUpInfo.password) {
       clientErrors.push('パスワードは必須です。');
+    }
+
+    if (userSignUpInfo.password.length < 6) {
+      clientErrors.push('パスワードは6文字以上で入力してください。');
+    }
+
+    if (userSignUpInfo.password.length > 30) {
+      clientErrors.push('パスワードは最大30文字までです。');
     }
 
     if (!userSignUpInfo.confirmPassword) {
