@@ -9,6 +9,10 @@ export class AuthService {
   register(userData: UserSignUpInfo): Observable<any> {
     return this.http.post('http://localhost:5238/api/register/', userData);
   }
+
+  login(userData: UserLoginInfo): Observable<any> {
+    return this.http.post('http://localhost:5238/api/login/', userData);
+  }
 }
 
 export interface UserSignUpInfo {
@@ -16,4 +20,9 @@ export interface UserSignUpInfo {
   email: string;
   password: string;
   confirmPassword: string;
+}
+
+export interface UserLoginInfo {
+  email: string;
+  password: string;
 }
